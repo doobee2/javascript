@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트의 기본01 - 변수의 선언과 사용</title>
+</head>
+<body>
+    <div id="result"></div>
+    <ul class="lst">
+        <li class="item1"></li>
+        <li class="item2"></li>
+        <li class="item3"></li>
+        <li class="item4"></li>
+    </ul>
+    <hr>
+    <nav>
+        <a href="">메뉴</a>
+        <a href="">메뉴</a>
+        <a href="">메뉴</a>
+    </nav>
+    <ul class="lst">
+        <li class="item1"></li>
+        <li class="item2"></li>
+        <li class="item3"></li>
+        <li class="item4"></li>
+    </ul>
+    <div id="res2"></div>
+
+    <button type="button" onclick="fnc3()">인라인 이벤트 발생</button>
+    <button type="button" id="btn2" >DOM 탄생 이벤트</button>
+
+    <ul class=""></ul>
+    <script>
+    //자바 언어처럼 타입지시자를 사용하지 않으며, 값을 대입하면, 형(Type)이 자동으로 정의 또는 변환됨.
+    //int a = 100;
+    var data1 = "일슬비";   //var는 재선언이 가능하고, 값도 언제나 변경할 수 있음. = 는 전달, 대입을 의미
+    let data2 = "이슬비";   //let은 재선언이 불가능하나, 값은 언제나 변경할 수 있음.
+    const data3 = "삼슬비"; //const(constant:상수)는 재선언 불가능, 값도 변경 불가.
+    console.log(data1);
+
+    var data1 = 1004;   //재선언이 되는 과정에서 다른주소로 들어감. 사용자 입장에서만 재사용으로 보임.
+    data2 = 7979;       //값만 변경
+   
+    //함수 정의 문법
+    function fnc1() {     //함수는 호출하여야만 실행, 함수는 항상 옆에 ()입력
+        document.write("출력");
+    }
+    var fnc2 = function() { alert("알림"); }
+
+    //간단한 객체 정의 문법
+    var obj = {
+        name:"이슬비",  //필드
+        age:20,
+        height:165.8,
+        method1:function(num1){ 
+            document.getElementById("res2").innerHTML = "<h2>이슬비화이팅</h2>" 
+            }    
+        };
+
+    document.getElementById("res2").innerText = obj.name + obj.age + obj.height;
+    //메소드 호출 방법
+
+    obj.method1();
+    
+    function fnc3() {
+        var result = document.getElementById("result");     //태그의 아이디에 의한 접근
+        var el = document.getElementsByClassName("lst");    //태그의 클래스에 의한 접근, 배열 e1[0], el[1]
+        var a = document.getElementsByTagName("a");         //태그의 태그명에 의한 접근, 배열 a[0], a[1], a[2]
+        var res2 = document.querySelector("#result");
+        var item = document.querySelectorAll(".lst li");    //배열 item[0] ~ item[7]
+        
+        result.innerText = data2;
+        for(var i=0; i<item.length; i++){   //반복 수행
+            item[i].innerHTML = "<strong>"+data3+"</strong>";
+        }
+    }
+
+    var btn2 = document.getElementById("btn2");
+    btn2.addEventListener("click", function(){
+        fnc3();
+    });
+
+    /*
+    fnc1();
+    fnc2();
+    */
+   
+    </script>
+</body>
+</html>
