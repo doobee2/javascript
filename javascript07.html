@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 기본07 - 조건문/반복문</title>
+</head>
+<body>
+    <h2>과목별 점수</h2>
+    <ul class="lst" id="lst1">
+        <li class="item">80</li>
+        <li class="item">100</li>
+        <li class="item">90</li>
+        <li class="item">95</li>
+        <li class="item">85</li>
+    </ul>
+    <hr>
+    <div id="tot"></div>
+    <div id="avg"></div>
+    <div id="pan"></div>
+    <div id="hak"></div>
+    <div id="remark"></div>
+    <div id="sang"></div>
+    <div class="btn-group">
+        <button type="button" onclick="compute()">계산</button>
+    </div>
+    <script>
+    //총점(tot) : 다섯 과목 점수의 합계
+    //평균(avg) : 총점 / 5
+    //판정(pan) : 모든 점수가 80점 이상이고, 평균이 70점 이상이면, "합격", 아니면 "불합격"
+    //학점(hak) : 평균이 90이상이면, "A", 80이상이면, "B", 70이상이면, "C", 70미만이면 "F"
+    //참고사항(remark) : 학점이 "A"이면, "고득점", "B"이면, "우수", "C"이면, "보통", 
+    //          기타는 "재평가"
+    //과목우수상(sang) : 어느 한 과목이라도 100이면, "과목우수", 아니면, "해당없음"
+    var tot = document.getElementById("tot");
+    var avg = document.getElementById("avg");
+    var pan = document.getElementById("pan");
+    var hak = document.getElementById("hak");
+    var remark = document.getElementById("remark");
+    var sang = document.getElementById("sang");
+    function compute(){
+        var t = 0;  //총점
+        var item = document.getElementsByClassName("item");
+
+        //for(var 인덱스변수=0;인덱스변수<개수;인덱스변수증감식) { 실행문; }
+        for(var i=0;i<item.length;i++){ //총점 계산
+            t += parseInt(item[i].innerText);
+        }
+        console.log("총점 :"+t);
+
+        var a = t / item.length; //평균 계산 : 총점 / 과목수
+        console.log("평균 :"+a);
+
+        /*
+        if(조건식) { 참일때실행문장; } else { 거짓일때실행문장; }
+        */
+        var p = "합격";
+        /*
+        if(a>=70 && parseInt(item[0].innerText)>=80 && parseInt(item[1].innerText)>=80 && parseInt(item[2].innerText)>=80 && parseInt(item[3].innerText)>=80 && parseInt(item[4].innerText)>=80){
+            p = "합격";
+        } else {
+            p = "불합격";
+        }
+        */
+
+        if(a>=70) {     //판정 계산
+            for(var i=0;i<item.length;i++){
+                if(parseInt(item[i].innerText)<80){
+                    p = "불합격";
+                }
+            }
+        } else {
+            p = "불합격";
+        }
+        console.log("판정 : "+p);
+
+        /* 
+            if(조건식1) { 
+                조건식1만족시실행문장; 
+            } else if(조건식2) {
+                조건식2만족시실행문장; 
+            ......
+            } else if(조건식n){
+                조건식n만족시실행문장; 
+            } else {
+                모든조건식이거짓시실행문장;
+            }
+        */
+
+        var h = "";
+        if(a>=90){  //학점 계산
+            h = "A";
+        } else if(a>=80){
+            h = "B";
+        } else if(a>=70){
+            h = "C";
+        } else {
+            h = "F";
+        }
+
+        /*
+
+        switch(기준변수) {
+            case 값1:
+                기준변수가값1이면실행할문장;
+                break;
+            case 값2:
+                기준변수가값2이면실행할문장;
+                break;
+            ....
+            case 값n:
+                기준변수가값n이면실행할문장;
+                break;
+            default:
+                기준변수의값이 어떤 case에도 일치하지 않는 경우;
+        }
+        */
+        var r = "";
+        switch (h) {    //참고사항 계산
+            case "A":
+                r = "고득점";
+                break;
+            case "B":
+                r = "우수";
+                break;
+            case "C":
+                r = "보통";
+                break;
+            default:
+                r = "재평가";
+        }
+        console.log("참고사항 : "+r);
+
+
+        /*
+        카운트변수선언및초기화문장;
+        while(조건식){
+            반복실행할문장;
+            카운트변수증감식;
+        }
+        */
+        var s = "해당없음";
+        var q = 0;  //카운트변수 초기화
+        while(q < item.length){     //과목 우수자 계산
+            if(parseInt(item[q].innerText)==100) s = "과목우수";
+            q++;
+        }
+        console.log("과목 : "+s);
+
+        tot.innerText = "총점:"+t;
+        avg.innerText = "평균:"+a;
+        pan.innerText = "판정:"+p;
+        hak.innerText = "학점:"+h;
+        remark.innerText = "참고사항:"+r;
+        sang.innerText = "과목우수여부:"+s;
+    }
+    </script>
+</body>
+</html>
