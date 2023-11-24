@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>자바스크립트 기본08 - </title>
+    <title>자바스크립트 기본08 - 이벤트</title>
     <script></script>
 </head>
 <body>
@@ -97,28 +97,28 @@
         } 
         */
         if(frm.field2.value==""){
-            alert("비밀번호가 입력되지 않았습니다.")
+            alert("비밀번호가 입력되지 않았습니다.");
             frm.field2.focus();
             return false;
         }
         if(frm.field3.value==""){
-            alert("비밀번호 확인이 입력되지 않았습니다.")
+            alert("비밀번호 확인이 입력되지 않았습니다.");
             frm.field3.focus();
             return false;
         }
         if(frm.field4.value==""){
-            alert("이름이 입력되지 않았습니다.")
+            alert("이름이 입력되지 않았습니다.");
             frm.field4.focus();
             return false;
         }
         if(frm.field5.value==""){
-            alert("이메일이 입력되지 않았습니다.")
+            alert("이메일이 입력되지 않았습니다.");
             frm.field5.focus();
             return false;
         }
 
         if(frm.field3.value!=frm.field2.value){
-            alert("비밀번호와 비밀번호 확인이 다릅니다.")
+            alert("비밀번호와 비밀번호 확인이 다릅니다.");
             return false;
         }
     }

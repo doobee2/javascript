@@ -4,12 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>자바스크립트 응용01 - 계산기</title>
+
+    <style>
+        
+        #calculator { font-family: "digital1", sans-serif; display:block; 
+        padding: 10px; background-color: pink; color:#fff; font-size:20px; 
+        width: 150px; height: 250px;} 
+        #cal_wrap { clear:both; width:400px; margin:10px auto; height:140px;
+             box-shadow:2px 2px 1px #333;}
+        #display {width: 120px;}
+        # {width: 40px;}
+        </style>
+
+
 </head>
 <body>
     <div id="calculator">
         <div class="cal_wrap">
             <input type="text" id="display">
             <table>
+                <tr>
+                    <td><button id="clear" onclick="cl()">CLEAR</button></td>
+                </tr>
                 <tr>
                     <td><button id="btn7" onclick="cal(7)">7</button></td>
                     <td><button id="btn8" onclick="cal(8)">8</button></td>
@@ -41,9 +57,14 @@
         var display = document.getElementById("display")
         function cal(btn) {
             display.value = display.value + btn;
+        }                   
+        function rt(){      //eval() : 문자열로 두성된 계산식을 실제 계산가능한 구조로 변경
+            display.value = eval(display.value); //현재 디스플레이에 있는 값을 넣어주면 끝!
         }
-        function rt(){      //eval() 현재 디스플레이에 있는 값을 넣어주면 끝!
-            display.value = eval(display.value);
+
+        function cl(){  //초기화
+            display.value = "";
+            display.focus();
         }
     </script>
 </body>

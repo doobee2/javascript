@@ -1,0 +1,75 @@
+@font-face {
+    font-family: "digital1";
+    src: url("./fonts/DS-DIGI.TTF");
+}
+.cal_wrap {
+    font-size: 5em;
+    width: 280px;
+    height: 310px;
+    font-size: large;
+    padding: 0.25em;
+    margin-bottom: .5em;
+    box-sizing: border-box;
+    text-align: right;
+    border-radius: .5em;
+    letter-spacing: 3px;
+    background-color: rgb(255, 199, 230);
+    box-shadow: inset 2px 2px 3px 0px rgba(0,0,0,.25);
+    position: relative;
+    margin-top: 50px;
+}
+
+.cal_wrap::before {
+    position: absolute;
+    content:"";
+    display: block;
+    width: 70px;
+    height: 90px;
+    background-size: contain;
+    background-image: url("melody.png");
+    background-repeat: no-repeat;
+    margin-left: 15px;
+    margin-top: -28px;
+    }
+
+table {
+    margin: 0 auto;
+}
+/* 컨텐츠(버튼)를 가운데로 정렬..... */
+  
+input {
+    margin: 8px;
+    width: 180px;
+    height: 40px;
+    text-align: right;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    padding-right: 0.7em;
+    font-weight: 600;
+}
+
+td {
+    width: 60px; 
+}
+
+
+button{ 
+    font-family: "digital1", sans-serif;
+    font-size : 18px;
+    align-items: left;
+    margin-top:0.4em; 
+    width: 100%;
+    height: 35px;
+    background-color: rgb(223, 83, 130); 
+    color: #fff;
+}
+
+button:hover { opacity: 0.8; }
+/*
+tr{ float:left; }
+
+button#clear {width: 187px;}
+button#btn0 {width: 124px;}
+*/
+
